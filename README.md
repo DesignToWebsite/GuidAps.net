@@ -1,3 +1,48 @@
+In databases, keys are used to uniquely identify records in tables and to establish relationships between different tables. Let's explore the concepts of primary keys and foreign keys in an easy-to-understand example.
+
+### Primary Key
+
+A **primary key** is a column or set of columns in a table that uniquely identifies each row in that table. It serves as a unique identifier for each record and ensures that there are no duplicate rows. 
+
+Let's say we have a `Students` table:
+
+| StudentId | Name       | Age |
+|-----------|------------|-----|
+| 1         | John Doe   | 20  |
+| 2         | Jane Smith | 22  |
+| 3         | Mark Lee   | 19  |
+
+In this table, `StudentId` is the primary key. It uniquely identifies each student because no two students can have the same `StudentId`.
+
+### Foreign Key
+
+A **foreign key** is a column (or set of columns) in one table that references the primary key of another table. It creates a relationship between the two tables and ensures data integrity.
+
+Let's say we also have a `Courses` table:
+
+| CourseId | CourseName |
+|----------|------------|
+| 101      | Math       |
+| 102      | Science    |
+| 103      | History    |
+
+And a `Enrollments` table that keeps track of which students are enrolled in which courses:
+
+| EnrollmentId | StudentId | CourseId |
+|--------------|-----------|----------|
+| 1            | 1         | 101      |
+| 2            | 2         | 102      |
+| 3            | 3         | 103      |
+
+In the `Enrollments` table:
+- `StudentId` is a foreign key referencing the `StudentId` primary key in the `Students` table.
+- `CourseId` is a foreign key referencing the `CourseId` primary key in the `Courses` table.
+
+These foreign keys establish relationships between tables:
+- The `StudentId` in `Enrollments` tells us which student is enrolled in a course.
+- The `CourseId` in `Enrollments` tells us which course the student is enrolled in.
+
+By using primary keys and foreign keys, you can create relationships between different tables and maintain data consistency across your database. In this example, you can find out which courses each student is enrolled in and which students are enrolled in each course.
 # GuidAps.net
 In ASP.NET, you can establish a relationship between two tables (or entities) using primary keys and foreign keys. Here is a step-by-step guide to create a relationship between tables using ASP.NET Core and Entity Framework Core:
 
