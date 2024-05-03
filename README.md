@@ -184,6 +184,107 @@ You can now use the relationships in your code:
 These are the basic steps to set up a relationship using primary and foreign keys in ASP.NET Core and Entity Framework Core. Define your entities with the appropriate primary keys and foreign keys, update your `ApplicationDbContext`, perform database migrations, and then you can use the relationships in your code for querying and adding data.
 
 In general, when making an API request from a React app to an ASP.NET Core API, you don't need extensive configuration on either end beyond basic considerations for CORS and URL construction. However, you should ensure that your React app is correctly set up to handle cross-origin requests and that your ASP.NET Core API is configured to allow requests from the origin of your React app.
+In C#, data annotations provide a convenient way to specify metadata and validation rules for properties in your model classes. The `[DataType]` attribute is part of the `System.ComponentModel.DataAnnotations` namespace and is used to specify the data type of a property. It helps define how the data should be interpreted and formatted, which can be useful for model binding, validation, and presentation in UI components.
+
+Here's a full guide on the `[DataType]` attribute, including its usage, common data types, and examples:
+
+### `[DataType]` Attribute
+
+The `[DataType]` attribute specifies the type of data a property holds. This can include standard data types such as dates, times, and email addresses. The attribute can improve validation and data binding in your application and assist in creating appropriate UI components.
+
+#### Syntax
+
+```csharp
+[DataType(DataType dataType)]
+public Type PropertyName { get; set; }
+```
+
+- **`dataType`**: The desired data type for the property, specified as a value from the `System.ComponentModel.DataAnnotations.DataType` enumeration.
+
+#### Example
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+public class User
+{
+    public int Id { get; set; }
+
+    [DataType(DataType.EmailAddress)]
+    public string Email { get; set; }
+
+    [DataType(DataType.Date)]
+    public DateTime BirthDate { get; set; }
+
+    [DataType(DataType.PhoneNumber)]
+    public string PhoneNumber { get; set; }
+
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
+}
+```
+
+### Common Data Types
+
+Here are some common data types you can specify using the `[DataType]` attribute:
+
+1. **DataType.Date**:
+    - Specifies that the property represents a date.
+    - Example: `DateTime BirthDate { get; set; }`.
+
+2. **DataType.Time**:
+    - Specifies that the property represents a time.
+    - Example: `TimeSpan AppointmentTime { get; set; }`.
+
+3. **DataType.DateTime**:
+    - Specifies that the property represents a date and time.
+    - Example: `DateTime CreatedAt { get; set; }`.
+
+4. **DataType.EmailAddress**:
+    - Specifies that the property represents an email address.
+    - Example: `string Email { get; set; }`.
+
+5. **DataType.PhoneNumber**:
+    - Specifies that the property represents a phone number.
+    - Example: `string PhoneNumber { get; set; }`.
+
+6. **DataType.Password**:
+    - Specifies that the property represents a password.
+    - Example: `string Password { get; set; }`.
+
+7. **DataType.Url**:
+    - Specifies that the property represents a URL.
+    - Example: `string Website { get; set; }`.
+
+8. **DataType.Currency**:
+    - Specifies that the property represents a currency value.
+    - Example: `decimal Price { get; set; }`.
+
+9. **DataType.CreditCard**:
+    - Specifies that the property represents a credit card number.
+    - Example: `string CreditCardNumber { get; set; }`.
+
+10. **DataType.MultilineText**:
+    - Specifies that the property represents a multiline text field.
+    - Example: `string Description { get; set; }`.
+
+11. **DataType.Html**:
+    - Specifies that the property represents HTML content.
+    - Example: `string Content { get; set; }`.
+
+12. **DataType.Custom**:
+    - Specifies a custom data type. Requires specifying the custom data type as a string.
+    - Example: `[DataType("customType")]`.
+
+### Usage
+
+- **Validation**: The `[DataType]` attribute helps enforce appropriate validation rules, such as ensuring an email address is valid or that a date field is in the correct format.
+- **UI Formatting**: UI components can use the data type to format data appropriately, such as displaying dates and times correctly or masking passwords.
+- **Model Binding**: The data type can aid in binding data from form submissions, URL parameters, and query strings to model properties.
+
+### Summary
+
+The `[DataType]` attribute provides a way to specify the intended data type of a property, allowing for improved validation, data binding, and UI formatting. By using this attribute, you can better define how data should be interpreted and presented in your application.
 
 ### CORS Configuration
 
